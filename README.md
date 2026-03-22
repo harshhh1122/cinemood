@@ -1,86 +1,71 @@
-# 🎬 CINEMOOD: THE ULTIMATE VIBE-CHECK FOR MOVIES! 🚀
+# CineMood 🎬
 
-[![Vibe Check](https://img.shields.io/badge/Vibe-Check%20Passed-brightgreen?style=for-the-badge&logo=vibe)](https://github.com/harshhh1122/cinemood)
-[![Powered By AI](https://img.shields.io/badge/Powered%20By-Gemini%20AI-blue?style=for-the-badge&logo=google-gemini)](https://ai.google.dev/)
-[![Built With React](https://img.shields.io/badge/Built%20With-React-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
+CineMood is a sophisticated, interactive movie discovery platform designed to help users find the perfect film based on their current emotional state. By leveraging AI-powered search and immersive 3D visuals, CineMood transforms the often-tedious process of choosing a movie into an engaging and intuitive experience.
 
----
+## 🚀 Live Demo
+[View Live Application](https://ais-pre-m2xlyya4z4ppg4cmqnj2it-531071592031.asia-east1.run.app)
 
-## 🌟 WTF IS CINEMOOD? 🍿
+## ✨ Key Features
 
-Stop scrolling through Netflix like a zombie. **CineMood** is here to rescue your movie night! 🦸‍♂️ 
+- **Mood-Based Discovery:** Navigate through curated movie categories based on emotional "vibes" such as Chilled, Energetic, Romantic, and Dramatic.
+- **AI-Powered "Magic Search":** Utilize Google's Gemini AI to identify movies from natural language descriptions of plots, scenes, or characters.
+- **Interactive 3D Environment:** An immersive background powered by Spline that responds dynamically to user cursor movements.
+- **Seamless Theme Integration:** Full support for Light and Dark modes with persistent user preferences.
+- **Responsive & Fluid UI:** A mobile-first design built with Tailwind CSS and animated with Framer Motion for a premium feel.
+- **Real-time Search:** Instant filtering and retrieval of movie data as you type.
 
-Whether you're feeling **Chilled**, **Energetic**, **Romantic**, or just plain **Chaotic**, we find the perfect flick to match your soul. No more "I don't know, what do you want to watch?" loops. Just pure cinematic bliss.
+## 🛠️ Tech Stack
 
----
+- **Frontend:** React 18+ with TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **3D Graphics:** Spline
+- **AI Integration:** Google Gemini API (`@google/genai`)
+- **Icons:** Lucide React
 
-## 🔥 INSANE FEATURES YOU'LL LOVE!
+## 📦 Installation & Setup
 
-### 🧙‍♂️ MAGIC SEARCH (AI VOODOO)
-Can't remember the name of that movie where the guy does the thing with the sandwich? Just describe it in plain English! Our **Gemini-powered AI** is basically a movie encyclopedia on steroids. It'll find that obscure film in seconds.
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
 
-### 🌈 MOOD-O-METER
-Filter movies by your current emotional frequency. 
-- 🧊 **Chilled** (For when you're a human potato)
-- ⚡ **Energetic** (For when you've had 3 espressos)
-- 💖 **Romantic** (For when love is in the air... or you want it to be)
-- 🎭 **Dramatic** (For when you need a good cry)
+### Steps
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/harshhh1122/cinemood.git
+   cd cinemood
+   ```
 
-### 🌀 INTERACTIVE 3D UNIVERSE
-The background isn't just a background—it's an **experience**. Powered by **Spline**, the 3D particles dance with your cursor. It's so satisfying, you might forget to actually watch a movie.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-### 🌓 DARK MODE (FOR THE VAMPIRES)
-Switch between a crisp Light mode and a sleek, eye-meltingly beautiful Dark mode. Because we know you're browsing at 3 AM.
+3. **Environment Configuration:**
+   Create a `.env` file in the root directory and add your Gemini API key:
+   ```env
+   VITE_GEMINI_API_KEY=your_api_key_here
+   ```
 
----
+4. **Start Development Server:**
+   ```bash
+   npm run dev
+   ```
 
-## 🛠️ THE GOD-TIER TECH STACK
+5. **Production Build:**
+   ```bash
+   npm run build
+   ```
 
-We didn't just build this with code; we built it with **magic**.
+## 📖 Usage Guide
 
-- **⚛️ React + TypeScript** (The brain)
-- **⚡ Vite** (The speed-demon build tool)
-- **🎨 Tailwind CSS** (The drip/styling)
-- **✨ Framer Motion** (The buttery smooth animations)
-- **🧊 Spline** (The 3D eye-candy)
-- **🤖 Google Gemini API** (The AI genius)
-- **🛡️ Lucide React** (The crisp icons)
+- **Mood Selection:** Click on the mood tags at the top to instantly filter movies by genre and emotional tone.
+- **Magic Search:** Click the "Magic" icon in the search bar to describe a movie in your own words. The AI will analyze your prompt and suggest the most relevant titles.
+- **Theme Toggle:** Use the theme switcher in the header to toggle between Light and Dark modes.
 
----
-
-## 🚀 GETTING STARTED (DO IT NOW!)
-
-### 1️⃣ CLONE THE BEAST
-```bash
-git clone https://github.com/harshhh1122/cinemood.git
-cd cinemood
-```
-
-### 2️⃣ FEED THE DEPENDENCIES
-```bash
-npm install
-```
-
-### 3️⃣ GIVE IT A BRAIN (API KEY)
-Create a `.env` file and slap your Gemini API key in there:
-```env
-VITE_GEMINI_API_KEY=YOUR_SECRET_SAUCE_HERE
-```
-
-### 4️⃣ IGNITION!
-```bash
-npm run dev
-```
+## 📄 License
+This project is licensed under the MIT License.
 
 ---
-
-## 🤝 JOIN THE MOVEMENT
-Found a bug? Want to add a "Crying in the Shower" mood? **Open a PR!** Let's make movie discovery fun again.
-
----
-
-### 👑 BUILT BY [HARSH](https://github.com/harshhh1122)
-
-*If you liked this, give it a ⭐ or I'll haunt your Netflix recommendations with B-list shark movies.* 🦈
-
----
+Developed with ❤️ by [Harsh](https://github.com/harshhh1122)
