@@ -2,9 +2,7 @@
 
 CineMood is a sophisticated, interactive movie discovery platform designed to help users find the perfect film based on their current emotional state. By leveraging AI-powered search and immersive 3D visuals, CineMood transforms the often-tedious process of choosing a movie into an engaging and intuitive experience.
 
-## 🚀 Live Demo
-[View Live Application](https://ais-pre-m2xlyya4z4ppg4cmqnj2it-531071592031.asia-east1.run.app)
-
+[View Live Application](https://cinemood-red.vercel.app)
 ## ✨ Key Features
 
 - **Mood-Based Discovery:** Navigate through curated movie categories based on emotional "vibes" such as Chilled, Energetic, Romantic, and Dramatic.
