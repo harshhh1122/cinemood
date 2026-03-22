@@ -142,13 +142,13 @@ export default function App() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
   return (
-    <div 
-      onMouseMove={handleMouseMove}
-      className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans selection:bg-indigo-100 selection:text-indigo-900 transition-colors duration-500 overflow-y-auto h-screen scroll-smooth"
-    >
+    <>
+      {/* Base Background Color */}
+      <div className="fixed inset-0 z-0 bg-zinc-50 dark:bg-zinc-950 transition-colors duration-500" />
+
       {/* Interactive Background */}
-      <div className="fixed inset-0 z-0 pointer-events-auto opacity-80 dark:opacity-60 transition-all duration-1000 dark:invert-0 invert">
-        <Suspense fallback={<div className="w-full h-full bg-zinc-950" />}>
+      <div className="fixed inset-0 z-1 pointer-events-none opacity-80 dark:opacity-60 transition-all duration-1000 dark:invert-0 invert">
+        <Suspense fallback={<div className="w-full h-full bg-transparent" />}>
           <Spline 
             scene="https://prod.spline.design/sLTac1l8a799vi4H/scene.splinecode" 
             className="w-full h-full"
@@ -156,7 +156,11 @@ export default function App() {
         </Suspense>
       </div>
 
-      <div className="grain" />
+      <div 
+        onMouseMove={handleMouseMove}
+        className="relative z-10 min-h-screen text-zinc-900 dark:text-zinc-100 font-sans selection:bg-indigo-100 selection:text-indigo-900 transition-colors duration-500 overflow-y-auto h-screen scroll-smooth"
+      >
+        <div className="grain" />
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-40 pt-4 px-4 sm:px-6 pointer-events-none">
         <div className="max-w-7xl mx-auto h-16 sm:h-20 bg-white/10 dark:bg-white/5 backdrop-blur-3xl border border-white/40 dark:border-white/10 rounded-full flex items-center justify-between gap-4 px-6 sm:px-10 shadow-[inset_0_2px_10px_rgba(255,255,255,0.4),0_25px_50px_-12px_rgba(0,0,0,0.3)] pointer-events-auto transition-all duration-500">
@@ -226,7 +230,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         {/* Hero Section */}
         <section className="min-h-screen flex flex-col items-center justify-start text-center scroll-mt-0 relative overflow-hidden pt-32 sm:pt-48">
           {/* Background Decorative Elements */}
@@ -626,13 +630,30 @@ export default function App() {
               </ul>
             </div>
           </div>
-          <div className="mt-24 pt-12 border-t border-zinc-900/10 dark:border-white/10 text-center text-zinc-400 text-sm font-bold uppercase tracking-widest">
-            © 2026 CineMood. All rights reserved.
+          <div className="mt-24 pt-12 border-t border-zinc-900/10 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-zinc-400 text-sm font-bold uppercase tracking-widest">
+              © 2026 CineMood. All rights reserved.
+            </div>
+            <div className="flex items-center gap-6 text-[10px] font-bold uppercase tracking-[0.2em]">
+              <div className="flex items-center gap-2">
+                <div className={`w-2 h-2 rounded-full ${import.meta.env.VITE_TMDB_API_KEY ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]' : 'bg-rose-500'}`} />
+                <span className={import.meta.env.VITE_TMDB_API_KEY ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600'}>
+                  TMDB: {import.meta.env.VITE_TMDB_API_KEY ? 'Connected' : 'Missing Key'}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className={`w-2 h-2 rounded-full ${import.meta.env.VITE_GEMINI_API_KEY ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]' : 'bg-rose-500'}`} />
+                <span className={import.meta.env.VITE_GEMINI_API_KEY ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600'}>
+                  AI: {import.meta.env.VITE_GEMINI_API_KEY ? 'Connected' : 'Missing Key'}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
 
       <Chatbot mousePosition={mousePosition} />
     </div>
+    </>
   );
 }
