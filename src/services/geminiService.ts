@@ -1,11 +1,17 @@
 import { GoogleGenAI, Type } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+
+if (!GEMINI_API_KEY) {
+  console.warn("VITE_GEMINI_API_KEY is missing! Gemini features will not work.");
+}
+
+const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY || "" });
 
 export async function identifyMovieFromDescription(description: string): Promise<{ movieName: string | null; confidence: number; explanation: string }> {
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-flash-latest",
       contents: `Identify the movie based on this description, dialogue, or song: "${description}". 
       If you are very sure, provide the movie name. If you are not sure, provide your best guess.
       Return the result in JSON format.`,
@@ -23,17 +29,24 @@ export async function identifyMovieFromDescription(description: string): Promise
       }
     });
 
+    if (!response.text) {
+      throw new Error("Empty response from Gemini");
+    }
+
     return JSON.parse(response.text);
-  } catch (error) {
+  } catch (error: any) {
     console.error("Gemini Identification Error:", error);
-    return { movieName: null, confidence: 0, explanation: "I couldn't identify the movie right now." };
+    if (error.response) {
+      console.error("Gemini Error Response:", error.response);
+    }
+    return { movieName: null, confidence: 0, explanation: "I couldn't identify the movie right now. Check console for details." };
   }
 }
 
 export async function getChatResponse(message: string, history: { role: 'user' | 'model', parts: { text: string }[] }[]) {
   try {
     const chat = ai.chats.create({
-      model: "gemini-3-flash-preview",
+      model: "gemini-flash-latest",
       config: {
         systemInstruction: `You are CineMood's helpful movie assistant. 
         Your goal is to help users find movies based on their mood or preferences.
@@ -44,13 +57,16 @@ export async function getChatResponse(message: string, history: { role: 'user' |
       },
     });
 
-    // We don't use the history directly in sendMessage for simplicity in this helper, 
-    // but we could pass it if we wanted a full conversation.
-    // For now, let's just send the message.
     const result = await chat.sendMessage({ message });
+    if (!result.text) {
+      throw new Error("Empty response from Gemini Chat");
+    }
     return result.text;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Gemini API Error:", error);
+    if (error.response) {
+      console.error("Gemini Chat Error Response:", error.response);
+    }
     return "I'm sorry, I'm having trouble connecting to my brain right now. Please try again later!";
   }
 }
